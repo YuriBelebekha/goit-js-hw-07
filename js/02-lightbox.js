@@ -12,12 +12,19 @@ function createGallery(galleryItems) {
   return galleryItems
   .map(( {preview, original, description} ) => {
     return `
-    <a class="gallery__item" href="${original}">
-      <img class="gallery__image" src="${preview}" alt="${description}"/>
-    </a>
+    <li class="gallery__item">
+      <a class="gallery__link" href="${original}">
+        <img class="gallery__image" src="${preview}" alt="${description}"/>
+      </a>
+    </li>
     `
   })
   .join('');  
 };
 
-const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
+const lightbox = new SimpleLightbox('.gallery a',
+  {
+    captionsData: 'alt',
+    captionPosition: 'outside',
+    captionDelay: 250,
+  });
